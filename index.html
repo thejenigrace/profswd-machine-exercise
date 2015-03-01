@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Play On</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div class="header">
+		<header>PLAY ON: DLSU LADY SPIKERS</header>
+	</div>
+	
+	<div class="gallery">
+		<div class="image-carousel">
+			<ul>
+				<li><img src="img/0.jpg" id="image"></li>
+				<li><img src="img/1.jpg" id="image"></li>
+				<li><img src="img/2.jpg" id="image"></li>
+				<li><img src="img/3.jpg" id="image"></li>
+				<li><img src="img/4.jpg" id="image"></li>
+				<li><img src="img/5.jpg" id="image"></li>
+			</ul>	
+		</div>
+
+		<div class="image-carousel-nav">
+			<button data-dir="left"> Left </button>
+			<button data-dir="right" style="float:right;"> Right </button>
+		</div>
+	</div>
+
+	<div class="body">
+		<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eros leo, semper eget elit sed, tempus pharetra lorem. Phasellus pellentesque nibh vitae tellus dignissim luctus. Donec sit amet justo nec massa feugiat rhoncus sed in nisi. Nulla consectetur nisl vel ex pharetra feugiat eu id mauris. Quisque mattis posuere mi, ac finibus orci laoreet non. Proin pharetra suscipit elit a rhoncus. Cras finibus augue eu dui gravida, a vehicula ante pellentesque. Maecenas lobortis iaculis mauris, id blandit augue imperdiet a. Nullam diam velit, blandit ac risus ac, placerat commodo ligula. Etiam nulla lorem, scelerisque sed diam in, tristique fermentum nibh. In sit amet gravida sem, in sagittis ligula. Curabitur in ligula at magna tristique consequat. Pellentesque rutrum ipsum eget vehicula tempor. Etiam nunc enim, rhoncus vitae elementum at, blandit id leo.
+		</p>
+		<p>	
+		Cras sapien ante, bibendum quis lacus eu, volutpat fringilla nunc. Fusce consequat bibendum lacus sit amet blandit. Nam laoreet sit amet sapien eget cursus. Nunc ante nunc, commodo fermentum nisl eget, sodales accumsan ante. Maecenas tortor est, sodales sed orci eget, gravida convallis enim. Fusce in iaculis leo. Quisque rhoncus cursus augue eu pellentesque. Ut rhoncus dolor nibh, et dignissim est ullamcorper et. Vivamus non feugiat sapien. Duis eu volutpat turpis. Aenean justo ipsum, tristique sit amet justo sed, cursus varius elit. Mauris a eros vel enim condimentum pulvinar ut ut nibh.
+		</p>
+	</div>
+
+	<div class="footer">
+		<footer>"ALL FOR GOD"</footer>
+	</div>
+	
+	<script src="jquery-2.1.3.min.js"/>
+	<script src="jquery-2.1.3.js"/>
+	<script src="script.js"/>
+	<script type="text/javascript">
+     	$(document).ready(function() {
+        // creating a container variable to hold the 'UL' elements. It uses method chaining.
+                var container = $('image-carousel')
+                                	.css('overflow','hidden')
+                                   	.children('ul');
+                 
+                /* 
+                On the event of mouse-hover, 
+                    i) Change the visibility of Button Controls.
+                    ii) SET/RESET the "intv" variable to switch between AutoSlider and Stop mode.
+                */
+                $('.gallery').hover(function( e ){
+                    $('.-nav').toggle();
+                    return e.type == 'mouseenter'?clearInterval(intv):autoSlider();
+                });
+                 
+                // Creating the 'slider' instance which will set initial parameters for the Slider.
+                var sliderobj = new slider(container,$('.image-carousel-nav'));
+                /*
+                This will trigger the 'setCurrentPos' and 'transition' methods on click of any button
+                 "data-dir" attribute associated with the button will determine the direction of sliding.
+                */
+                sliderobj.nav.find('button').on('click', function(){
+                    sliderobj.setCurrentPos($(this).data('dir'));
+                    sliderobj.transition();
+                });
+                 
+                autoSlider(); // Calling autoSlider() method on Page Load.
+                 
+                /* 
+                This function will initialize the interval variable which will cause execution of the inner function after every 2 seconds automatically.
+                */
+                function autoSlider()
+                {
+                    return intv = setInterval(function(){
+                        sliderobj.setCurrentPos('next');
+                        sliderobj.transition();
+                    }, 2000);
+                }
+                 
+            });
+	</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+/* 
+* @Author: Jennica
+* @Date:   2015-03-01 10:21:36
+* @Last Modified by:   Jennica
+* @Last Modified time: 2015-03-01 15:30:11
+*/
+
+html { 
+	background-color: lightseagreen;
+}
+
+body {
+	text-align: center;
+}
+
+header, footer { 
+	color: white;
+	font-family: Impact;
+	font-size: 80px;
+}
+
+
+p {
+	margin: 30px;
+	font-family: sans-serif;
+	font-size: 18px;
+	text-align: justify;
+	color: white;
+}
+
+.header, .footer {
+	background-color: teal;
+	height: 100px;
+}
+
+.footer {
+	position: relative;
+	width: 98.8%;
+	bottom: 0;
+	margin-bottom: 10px;
+}
+
+img { 
+	width: 500px;
+	height: 500px;
+}
+
+button {
+	width: 50px;
+	height: 50px;
+	background-color: palegreen;
+}
+
+.gallery
+{
+   	width: 500px;
+	height: 500px;
+    margin: 20px auto;
+    background: lightseagreen;
+    border:1px solid white;
+}
+
+.image-carousel {
+	width: inherit;
+	height: 500px;
+	overflow: scroll;
+}
+
+.image-carousel ul {
+    width: 10000px;
+    list-style: none;
+    margin-left: 0px;
+}
+.image-carousel li {
+    float: left;
+}
+ 
+.image-carousel-nav {
+    display: none; /* This is important to hide the buttons if jQuery is Not supported. */
+    margin-top: -10em;
+    cursor: pointer;        
+}
+
+
